@@ -1,0 +1,8 @@
+name: angel_http2
+description: Experimental...
+dependencies:
+  angel_common: ^1.0.0
+  http2: ^0.1.1
+  mock_request: ^1.0.0
+dev_dependencies:
+  test: ^0.12.0
