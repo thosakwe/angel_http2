@@ -81,6 +81,14 @@ class Http2Server extends Stream<HttpRequest> implements HttpServer {
           if (rq != null) {
             // Let's push the HTTP/2 request along...
             server._stream.add(rq..close());
+
+            rq.response.done.then((_) {
+              rq.response.listen((buf) {
+                // TODO: Send data back over HTTP/2
+              }, onDone: () {
+                connection.terminate();
+              });
+            });
           }
         });
       });
