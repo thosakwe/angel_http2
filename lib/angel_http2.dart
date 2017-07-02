@@ -1,6 +1,15 @@
 import 'dart:async';
-import 'package:angel_framework/angel_framework.dart';
+import 'dart:io';
+import 'package:angel_common/angel_common.dart';
 
 Future configureServer(Angel app) async {
-  app.get('/', (RequestContext req) => req.io.protocolVersion);
+  app.before.add(cors());
+
+  app.get(
+      '/protocol',
+      (RequestContext req) =>
+          'You\'re running HTTP/${ req.io.protocolVersion}.');
+
+  app.after.add((res) => res.sendFile(new File('web/index.html')));
+  app.responseFinalizers.add(gzip());
 }
