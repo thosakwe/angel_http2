@@ -8,8 +8,8 @@ import 'package:mock_request/mock_request.dart';
 
 main() async {
   var ctx = new SecurityContext()
-    ..useCertificateChain('keys/server.crt')
-    ..usePrivateKey('keys/server.key');
+    ..useCertificateChain('keys/server_chain.pem')
+    ..usePrivateKey('keys/server_key.pem', password: 'dartdart');
 
   var app = new Angel();
   await app.configure(configureServer);
