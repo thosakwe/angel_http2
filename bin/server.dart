@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:angel_framework/angel_framework.dart';
@@ -6,7 +7,15 @@ import 'package:http2/transport.dart';
 import 'package:http2/multiprotocol_server.dart';
 import 'package:mock_request/mock_request.dart';
 
-main() async {
+main() {
+  // Use runZoned to prevent server crashes.
+  runZoned(serverMain, onError: (e, st) {
+    stderr.writeln(e);
+    stderr.writeln(st);
+  });
+}
+
+serverMain() async {
   var ctx = new SecurityContext()
     ..useCertificateChain('keys/server_chain.pem')
     ..usePrivateKey('keys/server_key.pem', password: 'dartdart');

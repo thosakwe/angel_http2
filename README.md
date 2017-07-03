@@ -1,8 +1,6 @@
 # angel_http2
 Experimental - Angel served via HTTP/2. We've got CORS, GZIP, and a static file running...
 
-For some reason, it won't serve HTTPS over HTTP/1.1. That's an issue with `package:http2`, I think.
-
 It turns out that Angel itself doesn't need to be modified to run on HTTP/2.
 Instead, my approach was leveraging `package:mock_request` to manufacture
 `HttpRequest` instances on incoming HTTP/2 connections.
@@ -20,5 +18,3 @@ Then, visit the following pages:
 * https://127.0.0.1:9090/protocol
 
 I've found this to work in both Chrome and Firefox. No Edge (Edge sucks).
-
-`angel_static` doesn't work, though. I don't know why, but I didn't bother investigating.
