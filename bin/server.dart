@@ -67,10 +67,7 @@ hackHttp2(Angel app) {
           }
         }
       } else if (msg is DataStreamMessage) {
-        if (rq != null) {
-          rq.add(msg.bytes);
-        } else
-          buf.addAll(msg.bytes);
+        buf.addAll(msg.bytes);
       }
     }, onDone: () async {
       if (rq != null) {
