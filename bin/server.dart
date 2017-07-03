@@ -11,7 +11,7 @@ main() {
   // Use runZoned to prevent server crashes.
   runZoned(serverMain, onError: (e, st) {
     stderr.writeln(e);
-    stderr.writeln(st);
+    if (st != null) stderr.writeln(st);
   });
 }
 

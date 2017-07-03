@@ -18,3 +18,4 @@ Then, visit the following pages:
 * https://127.0.0.1:9090/protocol
 
 I've found this to work in both Chrome and Firefox. No Edge (Edge sucks).
+It works in IE, but not Edge???
